@@ -9,9 +9,10 @@ class MainController {
     mainAction(req: Request, res: Response){
         res.status(200).send('welcome boilerplate-ts-express');
     }
+    exposeRoutes(){
+        return this.router;
+    }
 }
 
 const router: Router = Router();
-const mainController = new MainController(router);
-
-export default mainController.router;
+export default new MainController(router).exposeRoutes();

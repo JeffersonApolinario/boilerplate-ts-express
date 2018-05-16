@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts" : {
+    "start": "node dist/index.js",
+    "daemon": "nodemon dist/index.js",
+    "daemon-ts": "tsc -w",
+    "clean": "rm -rf dist",
+    "build": "tsc"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",

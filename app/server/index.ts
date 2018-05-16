@@ -20,15 +20,17 @@ class Server {
     messageListen(): void{
         console.log(`Server Listening on ${this.address}:${this.port}`);
     }
-    register(): void{
+    routes(): void{
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use('/', MainController);
         this.app.use('/person', PersonController);
     }
+    bootstrap(): void{
+        this.routes();
+        this.listen();
+    }
 }
 
 const port = parseInt(process.env.PORT);
-const server = new Server(port);
-
-export default server;
+export default new Server(port);

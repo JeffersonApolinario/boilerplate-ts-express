@@ -5,6 +5,8 @@ class MongoConnection {
 
     constructor(url: string) {
         this.url = url;
+        this.reconnect = this.reconnect.bind(this);
+        this.connect = this.connect.bind(this);
         mongoose.connection.on('connected', this.messageConnected);
         mongoose.connection.on('disconnected', this.reconnect);
     }
@@ -23,6 +25,5 @@ class MongoConnection {
 
 
 const url = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_SCHEMA}`
-const mongoConnection = new MongoConnection(url);
 
-export default mongoConnection;
+export default new MongoConnection(url);

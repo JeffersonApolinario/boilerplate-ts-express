@@ -3,6 +3,5 @@ import MongooseConnection from './mongoose/connection';
 
 (async function(){
     await MongooseConnection.connect();
-    Server.register();
-    Server.listen();
+    Server.bootstrap();
 })();
