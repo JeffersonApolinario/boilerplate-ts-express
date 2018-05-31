@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts" : {
     "start": "node dist/index.js",
-    "daemon": "nodemon dist/index.js",
-    "daemon-ts": "tsc -w",
+    "watch": "nodemon dist/index.js",
+    "watch-ts": "tsc -w",
     "clean": "rm -rf dist",
     "build": "tsc"
   },

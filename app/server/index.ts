@@ -12,21 +12,22 @@ class Server {
         this.port = port;
         this.address = address;
         this.app = express();
-        this.messageListen = this.messageListen.bind(this);
     }
-    listen(): void{
-        this.app.listen(this.port, this.address, this.messageListen);
+    listen(): void {
+        this.app.listen(this.port, this.address, () => {
+            console.log(`Server listening on ${this.address}:${this.port}`);
+        });
     }
-    messageListen(): void{
-        console.log(`Server Listening on ${this.address}:${this.port}`);
-    }
-    routes(): void{
+    middleware(): void {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
+    }
+    routes(): void{
         this.app.use('/', MainController);
         this.app.use('/person', PersonController);
     }
     bootstrap(): void{
+        this.middleware();
         this.routes();
         this.listen();
     }
