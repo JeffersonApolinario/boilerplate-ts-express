@@ -6,10 +6,10 @@ class MainController {
         this.router = router;
         router.get('/', this.mainAction);
     }
-    mainAction(req: Request, res: Response){
+    mainAction(req: Request, res: Response) {
         res.status(200).send('welcome boilerplate-ts-express');
     }
-    exposeRoutes(){
+    exposeRoutes() {
         return this.router;
     }
 }

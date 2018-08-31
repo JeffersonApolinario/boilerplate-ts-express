@@ -6,7 +6,7 @@ class MongoConnection {
     constructor(url: string) {
         this.url = url;
         mongoose.connection.on('connected', () => {
-            console.log(`Mongo connected on ${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_SCHEMA}`)            
+            console.log(`Mongo connected on ${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_SCHEMA}`);            
         });
         mongoose.connection.on('disconnected', () => {
             console.log('Mongo has desconnected');
@@ -19,6 +19,6 @@ class MongoConnection {
     }
 }
 
-const url = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_SCHEMA}`
+const url = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_SCHEMA}`;
 
 export default new MongoConnection(url);

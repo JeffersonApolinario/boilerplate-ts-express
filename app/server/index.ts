@@ -7,27 +7,32 @@ import PersonController from './controller/person-controller';
 class Server {
     port: number = 0;
     address: string = '';
-    app: express.Express = null; 
-    constructor(port: number, address: string = 'localhost'){
+    app: express.Express = null;
+    
+    constructor(port: number, address: string = 'localhost') {
         this.port = port;
         this.address = address;
         this.app = express();
     }
+
     listen(): void {
         this.app.listen(this.port, this.address, () => {
             console.log(`Server listening on ${this.address}:${this.port}`);
         });
     }
-    middleware(): void {
+
+    middlewares(): void {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
     }
-    routes(): void{
+
+    routes(): void {
         this.app.use('/', MainController);
         this.app.use('/person', PersonController);
     }
-    bootstrap(): void{
-        this.middleware();
+    
+    bootstrap(): void {
+        this.middlewares();
         this.routes();
         this.listen();
     }

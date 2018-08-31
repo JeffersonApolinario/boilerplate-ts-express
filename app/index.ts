@@ -1,7 +1,7 @@
 import Server from './server';
 import MongooseConnection from './mongoose/connection';
 
-(async function(){
+(async function() {
     await MongooseConnection.connect();
     Server.bootstrap();
 })();
